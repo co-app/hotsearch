@@ -1,0 +1,75 @@
+import axios from 'axios';
+import {TrendingKeyword} from '../types/trendingKeyword';
+
+export const fetchTrendingKeywords = async (): Promise<TrendingKeyword[]> => {
+  // 실제 API 연동 시 URL만 교체
+  const res = await axios.get<TrendingKeyword[]>('/mock/trending-keywords', {
+    adapter: (config: any) => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            data: [
+              {
+                id: '1',
+                rank: 1,
+                keyword: '토스뱅크',
+                change: 'up',
+                changeCount: 3,
+              },
+              {
+                id: '2',
+                rank: 2,
+                keyword: '토스증권',
+                change: 'down',
+                changeCount: 1,
+              },
+              {id: '3', rank: 3, keyword: '토스카드', change: 'new'},
+              {
+                id: '4',
+                rank: 4,
+                keyword: '토스페이',
+                change: 'up',
+                changeCount: 2,
+              },
+              {
+                id: '5',
+                rank: 5,
+                keyword: '토스보험',
+                change: 'down',
+                changeCount: 1,
+              },
+              {id: '6', rank: 6, keyword: '토스머니', change: 'new'},
+              {
+                id: '7',
+                rank: 7,
+                keyword: '토스투자',
+                change: 'up',
+                changeCount: 4,
+              },
+              {
+                id: '8',
+                rank: 8,
+                keyword: '토스대출',
+                change: 'down',
+                changeCount: 2,
+              },
+              {id: '9', rank: 9, keyword: '토스적금', change: 'new'},
+              {
+                id: '10',
+                rank: 10,
+                keyword: '토스펀드',
+                change: 'up',
+                changeCount: 1,
+              },
+            ],
+            status: 200,
+            statusText: 'OK',
+            headers: {},
+            config,
+          });
+        }, 800);
+      });
+    },
+  });
+  return res.data;
+};

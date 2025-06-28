@@ -1,0 +1,8 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "types": ["styled-components", "styled-components-react-native"],
+    "typeRoots": ["./node_modules/@types", "./node_modules/styled-components"]
+  },
+  "include": ["src/**/*", "src/components/**/*", "App.tsx", "index.js"]
+}
